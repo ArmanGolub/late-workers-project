@@ -1,6 +1,6 @@
 import { Footer, Page, Section, Stack } from "@/common/components/layout";
 import { Button } from "@/common/components/ui";
-import { eyebrow, iconButton } from "@/common/styles";
+import { iconButton, pageDescription, pageTitle, prose } from "@/common/styles";
 import { useAppStore } from "@/modules/dashboard";
 import { ArrowRight, Minus, Plus, Zap } from "lucide-react";
 import { useState } from "react";
@@ -37,14 +37,9 @@ export const HomePage = () => {
   return (
     <Page>
       <Section divider={false}>
-        <Stack gap="lg">
-          <p className={eyebrow}>React · Starter · Kit</p>
-          <h1 className="text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl">
-            {t("welcome")}
-          </h1>
-          <p className="text-muted-foreground max-w-xl text-base">
-            {t("home.heroSubtitle")}
-          </p>
+        <Stack gap="lg" className={prose}>
+          <h1 className={pageTitle}>{t("welcome")}</h1>
+          <p className={pageDescription}>{t("home.heroSubtitle")}</p>
           <div className="flex flex-wrap gap-3 pt-2">
             <Button
               size="lg"
@@ -72,14 +67,14 @@ export const HomePage = () => {
         </Stack>
       </Section>
 
-      <Section label={t("home.stackLabel")} delay={0.1}>
-        <ul className="mt-6 divide-y">
+      <Section title={t("home.stackTitle")} delay={0.1}>
+        <ul className="grid gap-x-10 sm:grid-cols-2 xl:grid-cols-3">
           {STACK_KEYS.map((item, i) => (
             <li
               key={item.name}
-              className="flex items-baseline gap-6 py-3 text-sm"
+              className="flex items-baseline gap-4 border-b py-3 text-sm"
             >
-              <span className="text-muted-foreground w-8 shrink-0 font-mono text-xs">
+              <span className="text-muted-foreground w-6 shrink-0 font-mono text-xs">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span className="w-32 shrink-0 font-medium">{item.name}</span>
@@ -89,9 +84,13 @@ export const HomePage = () => {
         </ul>
       </Section>
 
-      <Section label={t("counterLabel")} delay={0.2}>
-        <div className="mt-2 flex items-end justify-between gap-6">
-          <p className="font-mono text-6xl font-semibold tracking-tight tabular-nums sm:text-7xl">
+      <Section
+        title={t("home.counterTitle")}
+        description={t("home.counterHint")}
+        delay={0.2}
+      >
+        <div className="flex max-w-xs items-end justify-between gap-6">
+          <p className="font-mono text-4xl font-semibold tracking-tight tabular-nums">
             {String(count).padStart(2, "0")}
           </p>
           <div className="flex items-center gap-2">
@@ -117,18 +116,14 @@ export const HomePage = () => {
             </button>
           </div>
         </div>
-        <p className="text-muted-foreground mt-4 text-xs">
-          {t("home.counterHint")}
-        </p>
       </Section>
 
-      <Section label={t("boom.label")} delay={0.4}>
-        <div className="mt-6 flex items-center justify-between gap-6">
-          <p className="text-muted-foreground text-sm">{t("boom.hint")}</p>
+      <Section title={t("boom.title")} description={t("boom.hint")} delay={0.4}>
+        <div>
           <button
             type="button"
             onClick={() => setShouldThrow(true)}
-            className="border-destructive/40 text-destructive hover:bg-destructive hover:text-destructive-foreground inline-flex h-10 items-center gap-2 rounded-md border px-4 font-mono text-sm font-medium transition-colors"
+            className="border-destructive/40 text-destructive hover:bg-destructive hover:text-destructive-foreground inline-flex h-10 items-center gap-2 rounded-md border px-4 text-sm font-medium transition-colors"
           >
             <Zap className="h-4 w-4" />
             {t("boom.action")}

@@ -1,9 +1,10 @@
 import { cn } from "@/common/lib/utils";
-import { eyebrow } from "@/common/styles";
+import { sectionDescription, sectionTitle } from "@/common/styles";
 import { motion } from "framer-motion";
 
 type SectionProps = {
-  label?: string;
+  title?: string;
+  description?: string;
   divider?: boolean;
   delay?: number;
   className?: string;
@@ -11,7 +12,8 @@ type SectionProps = {
 };
 
 export const Section = ({
-  label,
+  title,
+  description,
   divider = true,
   delay = 0,
   className,
@@ -23,7 +25,12 @@ export const Section = ({
     transition={{ duration: 0.3, delay }}
     className={cn(divider && "mt-24 border-t pt-10", className)}
   >
-    {label && <p className={eyebrow}>{label}</p>}
+    {(title || description) && (
+      <div className="mb-6">
+        {title && <h2 className={sectionTitle}>{title}</h2>}
+        {description && <p className={sectionDescription}>{description}</p>}
+      </div>
+    )}
     {children}
   </motion.section>
 );

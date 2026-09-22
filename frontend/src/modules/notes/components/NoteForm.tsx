@@ -75,6 +75,7 @@ export const NoteForm = ({
         <input
           type="text"
           className={field}
+          aria-invalid={!!errors.title}
           placeholder={t("notes.form.titlePlaceholder")}
           {...register("title", {
             required: t("notes.form.errors.titleRequired"),
@@ -92,6 +93,7 @@ export const NoteForm = ({
         <textarea
           rows={3}
           className={field + " resize-none"}
+          aria-invalid={!!errors.content}
           placeholder={t("notes.form.contentPlaceholder")}
           {...register("content")}
         />

@@ -1,3 +1,4 @@
+import { pageTitle } from "@/common/styles";
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 type Props = { children: ReactNode };
@@ -26,12 +27,7 @@ export class ErrorBoundary extends Component<Props, State> {
     return (
       <div className="bg-background text-foreground flex min-h-screen items-center">
         <div className="mx-auto w-full max-w-xl px-4 py-16">
-          <p className="text-destructive font-mono text-xs tracking-[0.2em] uppercase">
-            Error · Fatal
-          </p>
-          <h1 className="mt-6 text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl">
-            Something broke.
-          </h1>
+          <h1 className={pageTitle}>Something broke.</h1>
           <p className="text-muted-foreground mt-4 text-sm">
             The app hit an unexpected error. Try reloading the page — if it
             happens again, the details below might help you track it down.
@@ -43,7 +39,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
           {import.meta.env.DEV && error.stack && (
             <details className="mt-3">
-              <summary className="text-muted-foreground hover:text-foreground cursor-pointer font-mono text-xs">
+              <summary className="text-muted-foreground hover:text-foreground cursor-pointer text-xs font-medium">
                 Stack trace
               </summary>
               <pre className="bg-muted text-muted-foreground mt-2 overflow-auto rounded-md border p-3 font-mono text-[11px] leading-relaxed">
@@ -56,14 +52,14 @@ export class ErrorBoundary extends Component<Props, State> {
             <button
               type="button"
               onClick={() => window.location.reload()}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center rounded-md px-4 font-mono text-sm font-medium"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 items-center rounded-md px-4 text-sm font-medium"
             >
               Reload
             </button>
             <button
               type="button"
               onClick={this.reset}
-              className="text-muted-foreground hover:text-foreground inline-flex h-10 items-center rounded-md border px-4 font-mono text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground inline-flex h-10 items-center rounded-md border px-4 text-sm font-medium"
             >
               Try again
             </button>

@@ -9,9 +9,7 @@ export const appRoutes: RouteObject[] = [
     path: "/",
     element: (
       <div className="flex min-h-screen flex-col">
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </div>
     ),
     children: [

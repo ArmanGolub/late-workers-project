@@ -9,7 +9,7 @@ type PageProps = {
 export const Page = ({ className, children }: PageProps) => (
   <div className="min-h-screen">
     <TopBar />
-    <main className={cn("mx-auto max-w-3xl px-4 py-16 sm:py-24", className)}>
+    <main className={cn("w-full px-6 py-12 sm:px-10", className)}>
       {children}
     </main>
   </div>

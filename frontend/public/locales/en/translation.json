@@ -2,12 +2,12 @@
   "welcome": "Welcome to your React project",
   "goContact": "Open Contact form",
   "goHome": "Back to Home",
-  "counterLabel": "Counter value",
   "increment": "Increment",
   "decrement": "Decrement",
   "home": {
     "heroSubtitle": "A lean Vite + React + TypeScript template — everything's wired up, just start shipping features.",
-    "stackLabel": "Stack",
+    "stackTitle": "Stack",
+    "counterTitle": "Counter value",
     "counterHint": "Kept in a Zustand store — shared across every page.",
     "stack": {
       "vite": "Fast dev server and builds.",
@@ -25,14 +25,13 @@
     }
   },
   "boom": {
-    "label": "Error boundary",
+    "title": "Error boundary",
     "hint": "Click the button to throw an error and see the boundary's fallback UI.",
     "action": "Boom"
   },
   "contactForm": {
     "title": "Contact form",
     "description": "A small demo of react-hook-form with validation, error messages and a submit handler — wired up to the project's typography, layout and i18n.",
-    "contactLabel": "Contact",
     "contactTitle": "Have a question or idea?",
     "form": {
       "name": "Your name",
@@ -74,7 +73,6 @@
     "login": {
       "title": "Sign in",
       "description": "Welcome back. Enter your credentials to continue.",
-      "sectionLabel": "Account",
       "sectionTitle": "Your credentials",
       "submit": "Sign in",
       "submitting": "Signing in...",
@@ -84,7 +82,6 @@
     "register": {
       "title": "Create account",
       "description": "A minute of setup — then notes and AI chat are yours.",
-      "sectionLabel": "Account",
       "sectionTitle": "Who are you?",
       "submit": "Create account",
       "submitting": "Creating...",
@@ -96,7 +93,7 @@
     "title": "Notes",
     "description": "Your personal notes — created, edited and deleted through the API.",
     "create": {
-      "label": "New note"
+      "title": "New note"
     },
     "form": {
       "titleLabel": "Title",
@@ -113,7 +110,7 @@
       }
     },
     "list": {
-      "label": "Your notes",
+      "title": "Your notes",
       "loading": "Loading...",
       "empty": "No notes yet — create the first one above.",
       "retry": "Retry",
@@ -131,7 +128,7 @@
     "page": {
       "title": "AI chat",
       "description": "Streaming chat with the backend's OpenAI endpoint — tokens arrive live over SSE.",
-      "sessionLabel": "Session"
+      "sessionTitle": "Session"
     },
     "chat": {
       "empty": "Ask anything — the reply streams in token by token.",

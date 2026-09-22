@@ -1,6 +1,12 @@
 import { Footer, Page, Section, Stack } from "@/common/components/layout";
-import { Button } from "@/common/components/ui";
-import { fieldError, inlineLink } from "@/common/styles";
+import { Button, Card } from "@/common/components/ui";
+import {
+  fieldError,
+  inlineLink,
+  pageDescription,
+  pageTitle,
+  prose,
+} from "@/common/styles";
 import { getErrorMessage } from "@/core/api";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -39,35 +45,32 @@ export const NotesPage = () => {
   return (
     <Page>
       <Section divider={false}>
-        <Stack gap="lg">
+        <Stack gap="lg" className={prose}>
           <Link to="/" className={inlineLink}>
             <ArrowLeft className="h-3 w-3" />
             {t("goHome")}
           </Link>
-          <h1 className="text-4xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-5xl">
-            {t("notes.title")}
-          </h1>
-          <p className="text-muted-foreground max-w-xl text-base">
-            {t("notes.description")}
-          </p>
+          <h1 className={pageTitle}>{t("notes.title")}</h1>
+          <p className={pageDescription}>{t("notes.description")}</p>
         </Stack>
       </Section>
 
-      <Section label={t("notes.create.label")} delay={0.1}>
-        <NoteForm
-          className="mt-8"
-          submitLabel={t("notes.form.create")}
-          onSubmit={(values) => createNote.mutateAsync(values)}
-        />
+      <Section title={t("notes.create.title")} delay={0.1}>
+        <Card className="max-w-xl p-6 sm:p-8">
+          <NoteForm
+            submitLabel={t("notes.form.create")}
+            onSubmit={(values) => createNote.mutateAsync(values)}
+          />
+        </Card>
       </Section>
 
-      <Section label={t("notes.list.label")} delay={0.2}>
+      <Section title={t("notes.list.title")} delay={0.2}>
         {notesQuery.isPending ? (
-          <p className="text-muted-foreground mt-6 text-sm">
+          <p className="text-muted-foreground text-sm">
             {t("notes.list.loading")}
           </p>
         ) : notesQuery.isError ? (
-          <Stack gap="md" className="mt-6">
+          <Stack gap="md">
             <p className={fieldError}>{getErrorMessage(notesQuery.error)}</p>
             <div>
               <Button
@@ -92,7 +95,7 @@ export const NotesPage = () => {
             />
           </>
         ) : (
-          <p className="text-muted-foreground mt-6 text-sm">
+          <p className="text-muted-foreground text-sm">
             {t("notes.list.empty")}
           </p>
         )}

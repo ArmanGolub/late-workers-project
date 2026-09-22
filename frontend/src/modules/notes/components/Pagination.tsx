@@ -30,7 +30,12 @@ export const Pagination = ({
   const hasNext = to < total;
 
   return (
-    <div className={cn("flex items-center justify-between gap-6", className)}>
+    <div
+      className={cn(
+        "flex max-w-md items-center justify-between gap-6",
+        className
+      )}
+    >
       <p className="text-muted-foreground font-mono text-xs tabular-nums">
         {t("notes.pagination.range", { from, to, total })}
       </p>

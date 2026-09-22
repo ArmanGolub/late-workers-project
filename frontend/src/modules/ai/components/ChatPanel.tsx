@@ -1,6 +1,6 @@
 import { Button } from "@/common/components/ui";
 import { cn } from "@/common/lib/utils";
-import { eyebrow, field, fieldError } from "@/common/styles";
+import { field, fieldError, metaLabel } from "@/common/styles";
 import { getErrorMessage } from "@/core/api";
 import { Send, Square, Trash2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +14,7 @@ type BubbleProps = {
   children: React.ReactNode;
 };
 
-/** One conversation turn: mono role eyebrow + bubble (user right, assistant left). */
+/** One conversation turn: role label + bubble (user right, assistant left). */
 const Bubble = ({ role, children }: BubbleProps) => {
   const { t } = useTranslation();
   const isUser = role === "user";
@@ -26,12 +26,12 @@ const Bubble = ({ role, children }: BubbleProps) => {
         isUser ? "items-end" : "items-start"
       )}
     >
-      <span className={eyebrow}>
+      <span className={metaLabel}>
         {isUser ? t("ai.chat.roleUser") : t("ai.chat.roleAssistant")}
       </span>
       <div
         className={cn(
-          "max-w-[85%] rounded-md border px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap",
+          "max-w-[60ch] rounded-md border px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap",
           isUser ? "bg-primary/5" : "bg-muted/40"
         )}
       >
@@ -70,7 +70,7 @@ export const ChatPanel = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-4xl space-y-6">
       {messages.length === 0 && !isStreaming ? (
         <p className="text-muted-foreground rounded-md border border-dashed px-4 py-10 text-center text-sm">
           {t("ai.chat.empty")}
@@ -83,7 +83,7 @@ export const ChatPanel = () => {
             pinnedRef.current =
               list.scrollHeight - list.scrollTop - list.clientHeight < 40;
           }}
-          className="max-h-[28rem] space-y-5 overflow-y-auto pr-1"
+          className="max-h-[60vh] space-y-5 overflow-y-auto pr-1"
         >
           {messages.map((message, index) => (
             <Bubble key={index} role={message.role}>
@@ -111,7 +111,7 @@ export const ChatPanel = () => {
       )}
 
       {status === "idle" && usage && (
-        <p className="text-muted-foreground font-mono text-[11px]">
+        <p className="text-muted-foreground text-xs">
           {t("ai.chat.usage", {
             input: usage.input_tokens,
             output: usage.output_tokens,
@@ -146,7 +146,7 @@ export const ChatPanel = () => {
           className={cn(field, "resize-none")}
         />
         <div className="flex items-center justify-between gap-4">
-          <p className="text-muted-foreground font-mono text-[11px]">
+          <p className="text-muted-foreground text-xs">
             {t("ai.chat.inputHint")}
           </p>
           <div className="flex items-center gap-2">

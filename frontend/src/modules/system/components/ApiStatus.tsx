@@ -5,8 +5,8 @@ import { useTranslation } from "react-i18next";
 import { useHealth } from "../hooks/useHealth";
 
 const DOT = {
-  ok: "bg-emerald-500",
-  degraded: "bg-amber-500",
+  ok: "bg-success",
+  degraded: "bg-warning",
   offline: "bg-destructive",
   loading: "bg-muted-foreground/40 animate-pulse",
 } as const;

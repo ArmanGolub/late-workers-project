@@ -20,11 +20,11 @@ export const TopBar = () => {
 
   return (
     <header className="bg-background/80 sticky top-0 z-40 border-b backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-3xl items-center justify-between gap-4 px-4">
+      <div className="flex h-14 w-full items-center justify-between gap-4 px-6 sm:px-10">
         <div className="flex items-center gap-5">
           <Link
             to="/"
-            className="hover:text-primary font-mono text-sm font-semibold tracking-tight"
+            className="hover:text-primary text-sm font-semibold tracking-tight"
           >
             rsk<span className="text-primary">/</span>
           </Link>
@@ -34,7 +34,7 @@ export const TopBar = () => {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  "font-mono text-xs tracking-[0.18em] uppercase transition-colors " +
+                  "text-sm font-medium transition-colors " +
                   (isActive
                     ? "text-primary"
                     : "text-muted-foreground hover:text-foreground")
@@ -50,7 +50,7 @@ export const TopBar = () => {
           {isAuthenticated ? (
             <>
               {me && (
-                <span className="text-muted-foreground hidden font-mono text-xs md:inline">
+                <span className="text-muted-foreground hidden text-xs md:inline">
                   {me.email}
                 </span>
               )}
@@ -67,13 +67,13 @@ export const TopBar = () => {
           ) : (
             <Link
               to="/login"
-              className="text-muted-foreground hover:text-foreground flex h-9 items-center rounded-md border px-3 font-mono text-xs tracking-[0.18em] uppercase transition-colors"
+              className="text-muted-foreground hover:text-foreground flex h-9 items-center rounded-md border px-3 text-sm font-medium transition-colors"
             >
               {t("nav.login")}
             </Link>
           )}
           <ApiStatus />
-          <div className="flex h-9 items-center rounded-md border p-0.5 font-mono text-xs">
+          <div className="flex h-9 items-center rounded-md border p-0.5 text-xs font-medium">
             {LANGS.map((lng) => {
               const active = i18n.language.startsWith(lng);
               return (
