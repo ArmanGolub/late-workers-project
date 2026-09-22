@@ -1,26 +1,27 @@
 # memory/
 
-Журнал работы над проектом. Здесь записываем, кто что сделал, — чтобы любой человек или агент, открыв проект, быстро понял текущее состояние без чтения всей истории git.
+Project work log. So anyone (human or agent) opening the project can quickly see the current state without reading the full git history.
 
-## Правила
+## Rules
 
-1. Пиши в `log.md`, новые записи — **сверху**.
-2. Одна запись = дата, что сделано (кратко, по пунктам), что осталось/сломано.
-3. В конце каждой записи ставь **свою букву-подпись** — так видно, кто это делал.
-4. Выбери себе букву, которой ещё нет в таблице ниже, и впиши себя.
+1. Write to `log.md`, newest entry on **top**.
+2. One entry = date, what was done, what's left/broken.
+3. **Keep entries short**: max ~4-5 one-line bullets per entry. Summarize, don't narrate — link to a file/commit for detail instead of repeating it here.
+4. Sign every entry with your letter, so it's clear who did it.
+5. Pick a letter not already in the table below and add yourself.
 
-## Подписи
+## Signatures
 
-| Буква | Кто |
+| Letter | Who |
 |---|---|
-| `d` | Claude (агент, сессии 20.09.2026+) |
-| `?` | ← впиши свою букву и имя сюда |
+| `d` | Claude (agent, sessions from 2026-09-20+) |
+| `?` | ← add your letter and name here |
 
-## Формат записи
+## Entry format
 
 ```markdown
 ## 2026-09-20
-- что сделал
-- что осталось
+- what was done
+- what's left
 — d
 ```

@@ -59,6 +59,8 @@ Each module follows the same internal layout: `api/<resource>.ts` (typed fetch f
 - Requests that must skip auth (login, register, health) pass `skipAuth: true` in the axios config so a stale token isn't attached and a 401 there doesn't trigger logout.
 - A 401 on any authenticated request clears the token in the response interceptor (`core/api/client.ts`), which propagates through `tokenStorage`'s listeners into `useAuthStore`, which `RequireAuth` reacts to.
 - `useLogin`/`useLogout` call `queryClient.clear()` to purge cross-user cache.
+- Comments: only for non-obvious *why* (a workaround, a subtle invariant, a constraint) — never restate *what* the code already says. Default to no comment.
+- Components hold only rendering/JSX logic; hooks hold only hook logic (state, effects, query/store wiring). Pull every pure function (formatting, calculations, mapping, validation) out into a `helpers.ts`/`utils.ts` inside the module (or `common/lib` if it's shared across modules) and import it in — don't inline that logic in a component or a hook body.
 
 ## Backend integration
 
@@ -67,10 +69,9 @@ Each module follows the same internal layout: `api/<resource>.ts` (typed fetch f
 - `getFieldErrors(err)` maps FastAPI 422 `details` (`{loc: ["body", "field"], msg}`) into a `{field: message}` record for `react-hook-form`'s `setError`.
 - SSE: `streamSse()` POSTs via raw `fetch` (not axios) to `${API_V1_URL}<path>`, parses `event:`/`data:` blocks, yields typed events. Used by `modules/ai/hooks/useChatStream.ts` against `POST /ai/chat/stream`; event contract is `delta` / `done` (with usage) / `error`, matching `backend/app/services/ai.py`.
 
-## Don'ts
+## ~~Don'ts~~
 
 - Don't bypass `tokenStorage` to read/write the auth token directly from components or stores.
 - Don't import a module's internal files from outside it — use the module's `index.ts` barrel.
 - Don't trust `frontend/README.md` for the current module/stack list — it's stale (describes a "quotes" module that doesn't exist and Tailwind 3; the real modules are `auth`, `notes`, `ai`, `system`, `dashboard`, `theme`, and the stack uses Tailwind 4).
-- Don't assume i18next defaults to English — `fallbackLng` in `core/i18n.ts` defaults to `"ru"`, even though `"en"` is listed first in `supportedLngs`.
 - Don't build on `modules/dashboard/stores/useAppStore.ts` — it's an unused starter-kit leftover (a demo counter), not real app state.
