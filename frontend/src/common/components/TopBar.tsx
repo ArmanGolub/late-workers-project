@@ -5,7 +5,7 @@ import { LogOut } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link, NavLink } from "react-router-dom";
 
-const LANGS = ["en", "ru"] as const;
+const LANGS = ["en", "ru", "kk"] as const;
 
 const NAV = [
   { to: "/notes", key: "nav.notes" },

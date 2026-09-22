@@ -16,7 +16,7 @@
       "tailwind": "Utility classes + theming via CSS tokens.",
       "shadcn": "Copy-in components — the code stays yours.",
       "framer": "Subtle, unobtrusive animations.",
-      "i18next": "Multilingual out of the box (en · ru).",
+      "i18next": "Multilingual out of the box (en · ru · kk).",
       "zustand": "Global state without the boilerplate.",
       "tanstack": "Server state, caching and devtools baked in.",
       "hookForm": "Performant forms with minimal re-renders.",

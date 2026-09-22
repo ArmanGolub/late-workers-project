@@ -37,7 +37,7 @@ rsk /
 **Internationalization**
 
 - **i18next** + browser language detection, HTTP backend, localStorage persistence
-- Ships with **English** and **Russian** locales
+- Ships with **English**, **Russian** and **Kazakh** locales
 
 **Reliability**
 
@@ -114,7 +114,7 @@ src/
     theme/           light / dark / system switcher
 
 public/
-  locales/           en, ru translation JSON
+  locales/           en, ru, kk translation JSON
 ```
 
 Each module and folder with multiple exports has an **`index.ts` public API**. Cross-module imports go through the barrel; same-module imports use relative paths.
